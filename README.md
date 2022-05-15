@@ -4,7 +4,7 @@
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=vtex-apps_cy-runner&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=vtex-apps_cy-runner)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=vtex-apps_cy-runner&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=vtex-apps_cy-runner)
 
-Tool to orchestrate Cypress tests
+Tool to orchestrate Cypress tests teste
 
 ## Features
 * Deploy a patched version of [toolbelt](https://github.com/vtex/toolbelt) to login by Cypress spec

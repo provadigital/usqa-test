@@ -1,0 +1,136 @@
+---
+base:
+  secrets:
+    enabled: true
+    name: VTEX_QE
+  vtex:
+    account: productusqa
+    id: 2001459804
+    domain: myvtex.com
+    urlExternalSeller: https://productusqaseller.myvtex.com
+    vtexIdUrl: https://vtexid.vtex.com.br/api/vtexid/pub/authenticate/default
+    deployCli:
+      enabled: true
+      git: https://github.com/vtex/toolbelt.git
+      branch: qe/cypress
+  twilio:
+    enabled: true
+  jira:
+    enabled: false
+    account: config-dev
+    board: jira-key
+    issueType: task
+  slack:
+    enabled: false
+    channel: some-channel
+  cypress:
+    devMode: false
+    runHeaded: false
+    getCookies: true
+    maxJobs: 1
+    quiet: true
+    projectId: 9myhsu
+    video: true
+    videoCompression: false
+    videoUploadOnPasses: false
+    screenshotOnRunFailure: true
+    trashAssetsBeforeRuns: false
+    viewportWidth: 1440
+    viewportHeight: 1500
+    defaultCommandTimeout: 25000
+    requestTimeout: 25000
+    watchForFileChanges: false
+    pageLoadTimeout: 45000
+    browser: chrome
+    chromeWebSecurity: false
+    sorry: false
+  stateFiles: [.orders.json]
+
+workspace:
+  name: random
+  prefix: av
+  linkApp:
+    enabled: false
+    logOutput:
+      enabled: false
+  installApps: [vtex.avalara]
+  removeApps: []
+  wipe:
+    enabled: true
+    stopOnFail: false
+    specs:
+      - cypress/integration/wipe.spec.js
+  teardown:
+    enabled: true
+
+strategy:
+  config:
+    enabled: true
+    sendDashboard: false
+    hardTries: 1
+    stopOnFail: true
+    parallel: false
+    specs:
+      - cypress/integration/post_setup.spec.js
+  apiTests:
+    enabled: true
+    sendDashboard: true
+    hardTries: 1
+    stopOnFail: false
+    parallel: false
+    specs:
+      - cypress/integration/1.1-addressVeri*
+      - cypress/integration/1.2-postalCode*
+      - cypress/integration/1.3-sku*
+      - cypress/integration/1.4-taxFallback*
+    dependency:
+      - cypress/integration/post_setup.spec.js
+  basicTests:
+    enabled: true
+    sendDashboard: true
+    hardTries: 1
+    stopOnFail: false
+    parallel: false
+    specs:
+      - cypress/integration/2.1-*
+      - cypress/integration/2.2-*
+      - cypress/integration/2.5-externalSeller*
+    dependency:
+      - cypress/integration/post_setup.spec.js
+  verifyTax:
+    enabled: true
+    sendDashboard: true
+    hardTries: 1
+    stopOnFail: false
+    parallel: false
+    specs:
+      - cypress/integration/2.3-discountProduct*
+      - cypress/integration/2.4-discountShipping*
+    dependency:
+      - cypress/integration/post_setup.spec.js
+  transaction:
+    enabled: true
+    sendDashboard: true
+    hardTries: 1
+    stopOnFail: false
+    parallel: false
+    specs:
+      - cypress/integration/2.6-transaction*
+    dependency:
+      - cypress/integration/2.1-*
+      - cypress/integration/2.2-*
+      - cypress/integration/2.3-discountProduct*
+      - cypress/integration/2.4-discountShipping*
+      - cypress/integration/2.5-externalSeller*
+  refund:
+    enabled: true
+    sendDashboard: true
+    hardTries: 2
+    stopOnFail: false
+    parallel: false
+    specs:
+      - cypress/integration/2.7-fullRefund*
+      - cypress/integration/2.8-partialRefund*
+    dependency:
+      - cypress/integration/2.1-*
+      - cypress/integration/2.2-*

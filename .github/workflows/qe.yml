@@ -18,6 +18,9 @@ jobs:
     with:
       runLint: true
       runSonarcloudJS: true
+      runCypress: true
     secrets:
       githubToken: ${{ secrets.GITHUB_TOKEN }}
       sonarToken: ${{ secrets.SONAR_TOKEN }}
+      cypressJson: ${{ secrets.VTEX_QE }}
+

@@ -17,3 +17,7 @@ jobs:
     uses: vtex-apps/usqa/.github/workflows/qe.yml@main
     with:
       runLint: true
+      runSonarcloudJS: true
+    secrets:
+      githubToken: ${{ secrets.GITHUB_TOKEN }}
+      sonarToken: ${{ secrets.SONAR_TOKEN }}

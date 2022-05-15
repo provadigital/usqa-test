@@ -7,7 +7,7 @@
     "lint": "eslint --ext js,jsx,ts,tsx .",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json}\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cy-runner": "node cy-runner.js"
+    "cy-r": "cd cy-runner && node cy-runner.js"
   },
   "husky": {
     "hooks": {

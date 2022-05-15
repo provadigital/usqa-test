@@ -1,0 +1,56 @@
+{
+  "name": "cy-runner",
+  "version": "1.0.0",
+  "description": "Tool to orchestrate tests on B2B applications",
+  "main": "cy-runner.js",
+  "scripts": {
+    "lint": "eslint --ext js,jsx,ts,tsx .",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json}\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy-runner": "node cy-runner.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,js,tsx,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,graphql,gql}": [
+      "prettier --write"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vtex-apps/cy-runner.git"
+  },
+  "keywords": [
+    "cypress",
+    "e2e",
+    "automated testing"
+  ],
+  "author": "charles.santos@vtex.com.br",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vtex-apps/cy-runner/issues"
+  },
+  "homepage": "https://github.com/vtex-apps/cy-runner#readme",
+  "dependencies": {
+    "@vtex/prettier-config": "^1.0.0",
+    "axios": "^0.26.0",
+    "cypress": "^9.6.0",
+    "cypress-file-upload": "^5.0.8",
+    "eslint": "^7.4.0",
+    "eslint-config-vtex": "^12.7.0",
+    "eslint-plugin-cypress": "^2.12.1",
+    "husky": "^4.2.5",
+    "js-yaml": "^4.1.0",
+    "lint-staged": "^10.2.11",
+    "lodash": "^4.17.21",
+    "prettier": "^2.4.0",
+    "shelljs": "^0.8.5"
+  }
+}

@@ -2,7 +2,7 @@
 base:
   secrets:
     enabled: true
-    name: VTEX_QE
+    name: VTEX_QEEE
   vtex:
     account: productusqa
     id: 2001459804
